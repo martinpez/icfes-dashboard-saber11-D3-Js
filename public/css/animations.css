@@ -1,0 +1,271 @@
+.chart-container svg .bar,
+.chart-container svg .cell {
+  transform-origin: left center;
+  animation: fadeInUp 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chart-container svg .line-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: lineDraw 1200ms ease-out forwards;
+}
+
+@keyframes lineDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.chart-container svg .area {
+  animation: fadeIn 500ms ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.chart-container svg .point {
+  transform-origin: center;
+  animation: pointPopIn 300ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes pointPopIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.chart-container svg .bubble {
+  transform-origin: center;
+  animation: bubblePop 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes bubblePop {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.chart-container svg .box {
+  transform-origin: bottom center;
+  animation: boxGrow 700ms ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes boxGrow {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.chart-container svg .whisker {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: whiskerExtend 300ms ease-out forwards;
+  animation-delay: 200ms;
+}
+
+@keyframes whiskerExtend {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.chart-container svg .median-line {
+  animation: fadeIn 300ms ease-out forwards;
+  animation-delay: 400ms;
+  opacity: 0;
+}
+
+.chart-container svg .regression-line {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: lineDraw 800ms ease-out forwards;
+  animation-delay: 600ms;
+}
+
+.chart-container svg .pandemic-line {
+  animation: slideInRight 400ms ease-out forwards;
+  transform: translateX(-20px);
+  opacity: 0;
+}
+
+@keyframes slideInRight {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.chart-container svg .hover-highlight {
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.chart-container svg .hover-highlight:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.chart-container svg .tooltip-target {
+  cursor: pointer;
+  transition: fill-opacity 150ms ease;
+}
+
+.chart-container svg .tooltip-target:hover {
+  fill-opacity: 0.85;
+}
+
+.chart-card {
+  transition: all 300ms ease;
+}
+
+.chart-card .chart-container svg .hoverable {
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.chart-card .chart-container svg .hoverable:hover {
+  filter: brightness(1.1);
+}
+
+.chart-container svg .skeleton {
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+  fill: var(--grid-line);
+}
+
+@keyframes skeletonPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.skeleton-loading .chart-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.chart-container svg .count-up {
+  animation: countUp 400ms ease-out forwards;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tooltip {
+  animation: tooltipIn 150ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes tooltipIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pulse-border {
+  animation: pulseBorder 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseBorder {
+  0%, 100% {
+    stroke-opacity: 1;
+  }
+  50% {
+    stroke-opacity: 0.5;
+  }
+}
+
+.shake {
+  animation: shake 200ms ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chart-container svg .bar,
+  .chart-container svg .cell,
+  .chart-container svg .line-path,
+  .chart-container svg .bubble,
+  .chart-container svg .box,
+  .chart-container svg .whisker,
+  .chart-container svg .regression-line,
+  .chart-container svg .pandemic-line,
+  .chart-container svg .point,
+  .chart-container svg .median-line,
+  .tooltip {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .skeleton-loading .chart-container::before,
+  .skeleton-loading .chart-container::after {
+    animation: none;
+  }
+}

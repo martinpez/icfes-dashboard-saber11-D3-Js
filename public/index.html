@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard ICFES - Resultados Saber 11</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="header-top">
+        <div>
+          <h1>Resultados <span>Saber 11</span> - ICFES Colombia</h1>
+          <div class="header-subtitle">Analisis de rendimiento academico 2018-2021</div>
+        </div>
+      </div>
+      <div class="filters">
+        <label>Año: <select id="filter-anio">
+            <option value="">Todos</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+          </select></label>
+        <label>Genero: <select id="filter-genero">
+            <option value="">Todos</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select></label>
+        <label>Estrato: <select id="filter-estrato">
+            <option value="">Todos</option>
+            <option value="Estrato 1">Estrato 1</option>
+            <option value="Estrato 2">Estrato 2</option>
+            <option value="Estrato 3">Estrato 3</option>
+            <option value="Estrato 4">Estrato 4</option>
+            <option value="Estrato 5">Estrato 5</option>
+            <option value="Estrato 6">Estrato 6</option>
+          </select></label>
+        <label>Tipo: <select id="filter-naturaleza">
+            <option value="">Todos</option>
+            <option value="OFICIAL">Oficial</option>
+            <option value="NO OFICIAL">No Oficial</option>
+          </select></label>
+        <label>Depto: <select id="filter-depto">
+            <option value="">Todos</option>
+          </select></label>
+      </div>
+    </header>
+
+    <div class="dashboard">
+      <div class="chart-card" id="chart-1">
+        <div class="chart-header">
+          <div class="chart-title">Mapa de Calor Territorial</div>
+          <div class="chart-desc">Puntaje global promedio Saber 11 por departamento. Descubre qué regiones lideran y cuáles requieren más atención.</div>
+        </div>
+        <div class="chart-container" data-chart="score-by-department"></div>
+      </div>
+
+      <div class="chart-card" id="chart-2">
+        <div class="chart-header">
+          <div class="chart-title">La Desigualdad Competencia a Competencia</div>
+          <div class="chart-desc">¿Qué tanto separa el estrato el rendimiento de cada prueba? Cada celda muestra el promedio de los estudiantes de ese nivel en esa competencia.</div>
+        </div>
+        <div class="chart-container" data-chart="heatmap-estrato-competencia"></div>
+      </div>
+
+      <div class="chart-card full-width" id="chart-3">
+        <div class="chart-header">
+          <div class="chart-title">La Brecha que No Cierra: Oficiales vs. Privados</div>
+          <div class="chart-desc">Trayectoria del puntaje promedio de colegios oficiales y no oficiales a lo largo de cuatro años. ¿Se acortó la distancia?</div>
+        </div>
+        <div class="chart-container" data-chart="timeseries-by-school-type"></div>
+      </div>
+
+      <div class="chart-card full-width" id="chart-4">
+        <div class="chart-header">
+          <div class="chart-title">¿Quién Puntúa Más? Distribución por Género</div>
+          <div class="chart-desc">Dispersión estadística de los puntajes de hombres y mujeres en cada competencia. La caja muestra el 50% central de los datos; los bigotes cubren el 80%.</div>
+        </div>
+        <div class="chart-container" data-chart="score-distribution-by-gender"></div>
+      </div>
+
+      <div class="chart-card full-width" id="chart-5">
+        <div class="chart-header">
+          <div class="chart-title">Capital Social vs. Capital Académico</div>
+          <div class="chart-desc">Cada burbuja es un grupo de estudiantes con el mismo índice NSE. Su posición vertical muestra su puntaje promedio. ¿La correlación es igual en colegios oficiales y no oficiales?</div>
+        </div>
+        <div class="chart-container" data-chart="nse-vs-score"></div>
+      </div>
+
+      <div class="chart-card full-width" id="chart-6">
+        <div class="chart-header">
+          <div class="chart-title">Top 20 Colegios con Mayor Puntaje</div>
+          <div class="chart-desc">Establecimientos con el puntaje global más alto entre quienes presentaron al menos 30 estudiantes. Las marcas secundarias muestran el desempeño en Matemáticas e Inglés.</div>
+        </div>
+        <div class="chart-container" data-chart="school-ranking"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tooltip" id="tooltip"></div>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="js/charts.js"></script>
+</body>
+
+</html>
