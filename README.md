@@ -69,16 +69,20 @@ Se implementaron varias optimizaciones:
 
 ## Tecnologías Utilizadas
 
-- **Framework**: Express.js (Node.js)
-- **Lenguaje**: JavaScript
-- **Bibliotecas**: D3.js v7, PostgreSQL (pg), node-cache, dotenv
+- **Framework**: Streamlit
+- **Lenguaje**: Python
+- **Visualizaciones**: Altair / Plotly
+- **Base de datos**: PostgreSQL (Aurora)
+- **Driver BD**: psycopg2 / SQLAlchemy
+- **Caching**: @st.cache_data (built-in)
 
 ## Instalación y Ejecución Local
 
 ### Requisitos Previos
 
-- Node.js 18+
+- Python 3.10+
 - PostgreSQL 14+
+- pip
 
 ### Base de Datos
 
@@ -96,15 +100,15 @@ psql -h host -U usuario -d icfes -f database/02-vistas-materializadas.sql
 
 ### Configuración
 
-Crear un archivo `.env` en la raíz del proyecto:
+Crear archivo `.streamlit/secrets.toml` en la raíz del proyecto:
 
-```env
-SERVER_PORT=3000
-DB_HOST=tu_host_aws
-DB_PORT=5432
-DB_NAME=icfes_db
-DB_USER=icfes_admin
-DB_PASSWORD=tu_password
+```toml
+[database]
+host = "tu_host_aws"
+port = 5432
+database = "icfes_db"
+user = "icfes_admin"
+password = "tu_password"
 ```
 
 ### Instrucciones
@@ -114,11 +118,17 @@ DB_PASSWORD=tu_password
 git clone https://github.com/usuario/icfes-dashboard.git
 cd icfes-dashboard
 
+# Crear entorno virtual (recomendado)
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# o
+venv\Scripts\activate  # Windows
+
 # Instalar dependencias
-npm install
+pip install -r requirements.txt
 
 # Ejecutar aplicación
-npm start
+streamlit run app.py
 ```
 
-La aplicación estará disponible en http://localhost:3000
+La aplicación estará disponible en http://localhost:8500
